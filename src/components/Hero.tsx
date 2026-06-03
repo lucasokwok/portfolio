@@ -13,9 +13,9 @@ export function Hero() {
   }, [])
 
   return (
-    <section className="relative overflow-hidden pt-20 lg:pt-24">
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.02),transparent_25%,transparent_75%,rgba(255,255,255,0.02))]" />
-      <div className="absolute inset-0 -z-10 grid-pattern opacity-35" />
+    <section className="hero-surface relative overflow-hidden pt-20 lg:pt-24">
+      <div className="hero-grid" />
+      <div className="hero-vignette" />
 
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:items-center lg:px-8 lg:py-24">
         <div className="lg:col-span-7">

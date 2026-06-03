@@ -14,7 +14,11 @@ export function Projects() {
   const [ref, isVisible] = useReveal<HTMLDivElement>()
 
   return (
-    <section ref={ref} id="projects" className="section-divider py-24 lg:py-32">
+    <section
+      ref={ref}
+      id="projects"
+      className="section-divider section-surface section-surface--projects py-24 lg:py-32"
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div
@@ -39,16 +43,41 @@ export function Projects() {
           style={{ transitionDelay: '180ms' }}
         >
           <div className="grid lg:grid-cols-2">
-            <div className="flex items-center justify-center border-b border-border bg-muted/20 p-8 lg:border-b-0 lg:border-r">
-              <div className="space-y-4 text-center">
-                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10">
-                  <Layers className="h-7 w-7 text-primary" />
+            <div className="border-b border-border bg-muted/20 p-5 lg:border-b-0 lg:border-r lg:p-6">
+              <div className="project-preview project-preview--feature">
+                <div className="project-preview__label">
+                  <span className="project-preview__badge">01</span>
+                  <span>{t.projects.preview}</span>
                 </div>
-                <div>
-                  <p className="text-xs font-mono uppercase tracking-[0.2em] text-primary">
-                    {t.projects.corporateProject}
-                  </p>
-                  <p className="text-sm text-muted-foreground">{t.projects.preview}</p>
+                <div className="absolute inset-x-6 top-6 z-[1] flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-primary/20 bg-primary/10">
+                      <Layers className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-mono uppercase tracking-[0.2em] text-primary">
+                        {t.projects.corporateProject}
+                      </p>
+                      <p className="text-xs text-muted-foreground">Preview maior para a tela principal</p>
+                    </div>
+                  </div>
+                  <Lock className="h-4 w-4 text-muted-foreground" />
+                </div>
+                <div className="absolute inset-x-6 bottom-6 z-[1] rounded-xl border border-border/60 bg-background/45 p-4 backdrop-blur-sm">
+                  <div className="grid gap-2 sm:grid-cols-3">
+                    <div className="rounded-lg border border-border/60 bg-card/65 p-2">
+                      <div className="h-2 w-12 rounded-full bg-primary/50" />
+                      <div className="mt-2 h-16 rounded-md border border-border/70 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950" />
+                    </div>
+                    <div className="rounded-lg border border-border/60 bg-card/65 p-2">
+                      <div className="h-2 w-10 rounded-full bg-cyan-300/50" />
+                      <div className="mt-2 h-16 rounded-md border border-border/70 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950" />
+                    </div>
+                    <div className="rounded-lg border border-border/60 bg-card/65 p-2">
+                      <div className="h-2 w-14 rounded-full bg-sky-400/50" />
+                      <div className="mt-2 h-16 rounded-md border border-border/70 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950" />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -100,6 +129,26 @@ export function Projects() {
               }`}
               style={{ transitionDelay: `${260 + index * 110}ms` }}
             >
+              <div className="px-6 pt-6">
+                <div className="project-preview project-preview--thumb">
+                  <div className="project-preview__label">
+                    <span className="project-preview__badge">0{index + 2}</span>
+                    <span>Screenshot</span>
+                  </div>
+                  <div className="absolute inset-x-5 top-5 z-[1] flex items-start justify-between gap-4">
+                    <div className="space-y-1">
+                      <p className="text-xs font-mono uppercase tracking-[0.2em] text-primary">
+                        {t.projects.corporateProject}
+                      </p>
+                      <p className="max-w-[16rem] text-xs text-muted-foreground">
+                        Thumbnail compacta da tela do projeto
+                      </p>
+                    </div>
+                    <Lock className="h-4 w-4 text-muted-foreground" />
+                  </div>
+                </div>
+              </div>
+
               <div className="flex items-center justify-between p-6 pb-0">
                 <span className="text-6xl font-bold text-muted/30">0{index + 2}</span>
                 <Lock className="h-4 w-4 text-muted-foreground" />

@@ -32,7 +32,11 @@ export function Contact() {
   ] as const
 
   return (
-    <section ref={ref} id="contact" className="section-divider py-24 lg:py-32">
+    <section
+      ref={ref}
+      id="contact"
+      className="section-divider section-surface section-surface--contact py-24 lg:py-32"
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-4xl">
           <div className="mb-16 text-center">

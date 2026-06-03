@@ -3,6 +3,15 @@ import { education } from '../data'
 import { useReveal } from '../hooks/useReveal'
 import { useLanguage } from './LanguageProvider'
 
+function getInstitutionInitials(value: string, maxParts = 2) {
+  return value
+    .split(' ')
+    .filter(Boolean)
+    .slice(0, maxParts)
+    .map((part) => part[0]?.toUpperCase())
+    .join('')
+}
+
 export function Education() {
   const { language, t } = useLanguage()
   const [ref, isVisible] = useReveal<HTMLDivElement>()
@@ -45,7 +54,11 @@ export function Education() {
   }
 
   return (
-    <section ref={ref} id="education" className="section-divider relative py-24 lg:py-32">
+    <section
+      ref={ref}
+      id="education"
+      className="section-divider section-surface section-surface--education relative py-24 lg:py-32"
+    >
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,transparent,rgba(255,255,255,0.02),transparent)]" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -80,16 +93,32 @@ export function Education() {
                 }`}
                 style={{ transitionDelay: `${180 + index * 100}ms` }}
               >
-                <div className="mb-6 flex items-start justify-between gap-4">
-                  <div
-                    className={`flex h-12 w-12 items-center justify-center rounded-xl ${
-                      isHighlight ? 'border border-amber-400/20 bg-amber-400/10' : 'border border-primary/20 bg-primary/10'
-                    }`}
-                  >
-                    <Icon className={`h-5 w-5 ${isHighlight ? 'text-amber-300' : 'text-primary'}`} />
+                <div className="mb-6 grid gap-4 sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:items-start">
+                  <div className="flex items-start">
+                    <div
+                      className={`flex h-14 w-14 items-center justify-center rounded-xl border bg-background/70 text-sm font-semibold tracking-[0.2em] ${
+                        isHighlight
+                          ? 'border-amber-400/20 text-amber-300'
+                          : 'border-primary/20 text-primary/90'
+                      }`}
+                    >
+                      {getInstitutionInitials(item.institution)}
+                    </div>
                   </div>
+
+                  <div className="space-y-2">
+                    <div
+                      className={`flex h-10 w-10 items-center justify-center rounded-xl border ${
+                        isHighlight ? 'border-amber-400/20 bg-amber-400/10' : 'border-primary/20 bg-primary/10'
+                      }`}
+                    >
+                      <Icon className={`h-5 w-5 ${isHighlight ? 'text-amber-300' : 'text-primary'}`} />
+                    </div>
+                    <p className="text-sm text-muted-foreground">{item.institution}</p>
+                  </div>
+
                   <span
-                    className={`rounded-full border px-2.5 py-1 text-xs font-mono ${getStatusClassName(item.status)}`}
+                    className={`inline-flex h-fit rounded-full border px-2.5 py-1 text-xs font-mono sm:justify-self-end ${getStatusClassName(item.status)}`}
                   >
                     {getStatusLabel(item.status)}
                   </span>
@@ -99,7 +128,6 @@ export function Education() {
                   <h3 className="text-lg font-semibold leading-snug text-foreground">
                     {item.degree[language]}
                   </h3>
-                  <p className="text-sm text-muted-foreground">{item.institution}</p>
                 </div>
               </article>
             )

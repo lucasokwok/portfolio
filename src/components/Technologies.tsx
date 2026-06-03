@@ -34,7 +34,11 @@ export function Technologies() {
   ]
 
   return (
-    <section ref={ref} id="technologies" className="section-divider relative py-24 lg:py-32">
+    <section
+      ref={ref}
+      id="technologies"
+      className="section-divider section-surface section-surface--technologies relative py-24 lg:py-32"
+    >
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,transparent,rgba(255,255,255,0.02),transparent)]" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

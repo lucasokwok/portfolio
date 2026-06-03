@@ -6,7 +6,11 @@ export function About() {
   const [ref, isVisible] = useReveal<HTMLDivElement>()
 
   return (
-    <section ref={ref} id="about" className="section-divider relative py-24 lg:py-32">
+    <section
+      ref={ref}
+      id="about"
+      className="section-divider section-surface section-surface--about relative py-24 lg:py-32"
+    >
       <div className="absolute inset-x-0 top-0 -z-10 h-px bg-border/50" />
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,transparent,rgba(255,255,255,0.02),transparent)]" />
 
